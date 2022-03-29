@@ -1,0 +1,170 @@
+@media (max-width: 1605px) {
+  .floor {
+    width: 1400px;
+  }
+
+  @keyframes leftt {
+    0% {
+      transform: translateX(1280px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(1280px);
+    }
+  }
+}
+
+@media (max-width: 1405px) {
+  .floor {
+    width: 1200px;
+    margin-top: 70px;
+  }
+
+  @keyframes leftt {
+    0% {
+      transform: translateX(1080px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(1080px);
+    }
+  }
+
+  .duck-div {
+    position: absolute;
+    height: 180px;
+    /* left: 100%; */
+    bottom: -90px;
+    animation: leftt 12s infinite linear;
+  }
+
+  .duck-img {
+    height: 90px;
+    animation: reverseDuck 12s infinite;
+    animation-timing-function: step-end;
+    position: relative;
+  }
+
+  .duck.dead {
+    animation-play-state: paused;
+    z-index: -1;
+  }
+  .duck-img.dead {
+    z-index: -1;
+    filter: saturate(60%);
+  }
+
+  .botofduck {
+    height: 90px;
+    width: 90px;
+    /* position: absolute; */
+    top: 100px;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 1205px) {
+  .floor {
+    width: 1100px;
+    margin-top: 70px;
+  }
+
+  @keyframes leftt {
+    0% {
+      transform: translateX(990px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(990px);
+    }
+  }
+
+  .duck-div {
+    position: absolute;
+    height: 170px;
+    /* left: 100%; */
+    bottom: -85px;
+    animation: leftt 12s infinite linear;
+  }
+
+  .duck-img {
+    height: 85px;
+    animation: reverseDuck 12s infinite;
+    animation-timing-function: step-end;
+    position: relative;
+  }
+
+  .duck.dead {
+    animation-play-state: paused;
+    z-index: -1;
+  }
+  .duck-img.dead {
+    z-index: -1;
+    filter: saturate(60%);
+  }
+
+  .botofduck {
+    height: 85px;
+    width: 85px;
+    /* position: absolute; */
+    top: 100px;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 1105px) {
+  .floor {
+    width: 1000px;
+    margin-top: 50px;
+  }
+
+  @keyframes leftt {
+    0% {
+      transform: translateX(895px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(895px);
+    }
+  }
+
+  .duck-div {
+    position: absolute;
+    height: 170px;
+    /* left: 100%; */
+    bottom: -85px;
+    animation: leftt 12s infinite linear;
+  }
+
+  .duck-img {
+    height: 85px;
+    animation: reverseDuck 12s infinite;
+    animation-timing-function: step-end;
+    position: relative;
+  }
+
+  .duck.dead {
+    animation-play-state: paused;
+    z-index: -1;
+  }
+  .duck-img.dead {
+    z-index: -1;
+    filter: saturate(60%);
+  }
+
+  .botofduck {
+    height: 85px;
+    width: 85px;
+    /* position: absolute; */
+    top: 100px;
+    z-index: -1;
+  }
+}

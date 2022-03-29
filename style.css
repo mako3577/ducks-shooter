@@ -42,6 +42,30 @@ body {
   bottom: -100px;
   animation: leftt 12s infinite linear;
 }
+
+.duck-img {
+  height: 100px;
+  animation: reverseDuck 12s infinite;
+  animation-timing-function: step-end;
+  position: relative;
+}
+
+.duck.dead {
+  animation-play-state: paused;
+  z-index: -1;
+}
+.duck-img.dead {
+  z-index: -1;
+  filter: saturate(60%);
+}
+
+.botofduck {
+  height: 100px;
+  width: 100px;
+  /* position: absolute; */
+  top: 100px;
+  z-index: -1;
+}
 .wrap {
   height: 100%;
   width: 100%;
@@ -56,13 +80,13 @@ body {
 
 @keyframes leftt {
   0% {
-    transform: translateX(1500px);
+    transform: translateX(1480px);
   }
   50% {
-    transform: translateX(0vw);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(1500px);
+    transform: translateX(1480px);
   }
 }
 
@@ -91,30 +115,6 @@ body {
   left: 16px;
   top: 3px;
 } */
-
-.duck-img {
-  height: 100px;
-  animation: reverseDuck 12s infinite;
-  animation-timing-function: step-end;
-  position: relative;
-}
-
-.duck.dead {
-  animation-play-state: paused;
-  z-index: -1;
-}
-.duck-img.dead {
-  z-index: -1;
-  filter: saturate(60%);
-}
-
-.botofduck {
-  height: 100px;
-  width: 100px;
-  /* position: absolute; */
-  top: 100px;
-  z-index: -1;
-}
 
 .bullet-hole {
   position: absolute;
