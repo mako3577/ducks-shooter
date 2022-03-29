@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  cursor: url("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-shooting-summer-olympics-flaticons-lineal-color-flat-icons.png")
+      32 32,
+    default;
+}
+
+.score-label {
+  font-size: 52px;
+  text-align: center;
+  cursor: url("https://cdn-icons-png.flaticon.com/512/933/933942.png"), auto;
+}
+
+.floor {
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 1600px;
+  margin-top: 40vh;
+  border-bottom: 2px solid black;
+  background-color: rgba(188, 143, 143, 0.137);
+  position: relative;
+  border-right: solid salmon 10px;
+  border-left: solid salmon 10px;
+}
+
+.duck {
+  height: 50%;
+  /* z-index: 5; */
+  /* background-color: rgba(65, 105, 225, 0.24); */
+  z-index: 5;
+}
+.duck-div {
+  position: absolute;
+  height: 200px;
+  /* left: 100%; */
+  bottom: -100px;
+  animation: leftt 12s infinite linear;
+}
+.wrap {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.dead .wrap {
+  transition: transform 1.5s;
+  transform: rotateX(90deg);
+  z-index: -1;
+}
+
+@keyframes leftt {
+  0% {
+    transform: translateX(1500px);
+  }
+  50% {
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(1500px);
+  }
+}
+
+@keyframes reverseDuck {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes dead {
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+/* .duck-img-container::after {
+  content: "x";
+  background-color: red;
+  width: 20px;
+  position: absolute;
+  left: 16px;
+  top: 3px;
+} */
+
+.duck-img {
+  height: 100px;
+  animation: reverseDuck 12s infinite;
+  animation-timing-function: step-end;
+  position: relative;
+}
+
+.duck.dead {
+  animation-play-state: paused;
+  z-index: -1;
+}
+.duck-img.dead {
+  z-index: -1;
+  filter: saturate(60%);
+}
+
+.botofduck {
+  height: 100px;
+  width: 100px;
+  /* position: absolute; */
+  top: 100px;
+  z-index: -1;
+}
+
+.bullet-hole {
+  position: absolute;
+  /* transition: opacity 10s; */
+  opacity: 0;
+  animation: fade-out 15s;
+}
+.bullet-hole.active {
+  opacity: 0;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
