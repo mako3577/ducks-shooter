@@ -85,8 +85,9 @@ const shootFloor = function (e) {
     let cloneBulletHole = bulletHole.cloneNode(false);
     cloneBulletHole.id = `bullet${bulletID}`;
 
-    if (bulletID > 10) {
+    if (bulletID > 15) {
       let toDelete = bulletID - 15;
+      console.log(toDelete);
       document.getElementById(`bullet${toDelete}`).remove();
     }
     floor.append(cloneBulletHole);
