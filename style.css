@@ -16,7 +16,7 @@ body {
   cursor: url("https://cdn-icons-png.flaticon.com/512/933/933942.png"), auto;
 }
 
-.floor {
+.wall {
   margin-left: auto;
   margin-right: auto;
   height: 200px;

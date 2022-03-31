@@ -1,27 +1,27 @@
-const floor = document.querySelector(".floor");
+const wall = document.querySelector(".wall");
 const duck = document.querySelector(".duck");
 const intervals = [];
 const bulletHole = document.querySelector(".bullet-hole");
 let scoreResult = document.querySelector(".score");
 let scoreValue = 0;
-let id = 2;
+let id = 1;
 let intervalTime;
 let headshot = 0;
 let bulletID = 1;
 
+// making new ducks
 const makeDuck = function () {
   let clone = duck.cloneNode(true);
 
   clone.id = `${id}`;
   clone.classList.remove("dead");
 
-  // floor.after(clone);
-  floor.appendChild(clone);
-  let cloneImg = clone.querySelector("img");
-  cloneImg.id = `img${id}`;
+  wall.appendChild(clone);
+  // let cloneImg = clone.querySelector("img");
+  // cloneImg.id = `img${id}`;
 
   clone.addEventListener("click", shootDuck);
-  clone.addEventListener("click", replyClick);
+  // clone.addEventListener("click", replyClick);
   id++;
 
   getRandomInt(2000, 3100);
@@ -38,8 +38,9 @@ const shootDuck = function (e) {
   let x = e.clientX - rect.left; //x position within the element.
   let y = e.clientY - rect.top; //y position within the element.
   let hit;
-
   console.log(`x: ${x}, y:${y}`);
+
+  // Hitbox settings
   if (x > 10 && x < 37 && y > 0 && y < 21) {
     console.log("headshot");
     hit = true;
@@ -58,15 +59,18 @@ const shootDuck = function (e) {
     hit = false;
   }
   console.log(hit);
+
   if (hit == true) {
     let thisId = this.id;
     shootedDuck = document.getElementById(`${thisId}`);
+    // add 'dead' class to duck to run proper animations
     shootedDuck.classList.add("dead");
     scoreValue += 1;
     scoreResult.textContent = `Score: ${scoreValue}`;
     document.querySelector(
       ".headshot-score"
     ).textContent = `Headshots: ${headshot}`;
+    // after animations of dying, dead duck will be removed
     setTimeout(function () {
       shootedDuck.remove();
     }, 1000);
@@ -75,39 +79,44 @@ const shootDuck = function (e) {
 
 //
 
-// function to run when shot missed
-const shootFloor = function (e) {
+// function to run if shot missed
+const shootWall = function (e) {
   let rect = e.target.getBoundingClientRect();
   let x = e.clientX - rect.left; //x position within the element.
   let y = e.clientY - rect.top; //y position within the element.
   console.log(x, y);
-  const drawBuleltHole = function (x, y) {
+
+  // function to draw bullet holes when duck missed
+  const drawBulletHole = function (x, y) {
     let cloneBulletHole = bulletHole.cloneNode(false);
+
+    // assign id to every bullet hole to make deleting them possible
     cloneBulletHole.id = `bullet${bulletID}`;
 
+    // check if there are more than 15 bullets in document
+    // if there is, delete first ones to improve performance
     if (bulletID > 15) {
       let toDelete = bulletID - 15;
       console.log(toDelete);
       document.getElementById(`bullet${toDelete}`).remove();
     }
-    floor.append(cloneBulletHole);
+    // add bullet hole to wall element
+    wall.append(cloneBulletHole);
+    // corection of coordinates to make bullet holes
+    // centred relative to cursor
     cloneBulletHole.style.left = `${x - 21}px`;
     cloneBulletHole.style.top = `${y - 16}px`;
 
+    // 'active' class makes bullets fading out due to opacity reduction
+    // fading out old bullet holes before removing them makes game more smooth
     cloneBulletHole.classList.add = "active";
     bulletID++;
   };
-  drawBuleltHole(x, y);
+
+  drawBulletHole(x, y);
 };
 
-const replyClick = function () {
-  console.log(`id` + this.id);
-};
-
-duck.addEventListener("click", shootDuck);
-duck.addEventListener("click", replyClick);
-floor.addEventListener("click", shootFloor);
-
+// this function exists to make new ducks in non-regular time intervals
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -116,4 +125,9 @@ function getRandomInt(min, max) {
   return intervalTime;
 }
 
-intervals.push(setInterval(makeDuck, intervalTime));
+duck.addEventListener("click", shootDuck);
+wall.addEventListener("click", shootWall);
+
+// makeDuck function will make 1st clone duck
+// and start interval to create next ones
+setTimeout(makeDuck, 600);
